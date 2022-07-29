@@ -5,7 +5,7 @@ import os
 main_application = tk.Tk()
 main_application.geometry('1200x800')
 main_application.title("Spad text editor")
-# main_application.wm_iconbitmap('icon.ico')
+main_application.wm_iconbitmap('icon.ico')
 
 
 ##################################### Main Manu ################################################
