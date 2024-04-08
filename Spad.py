@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import font,messagebox,colorchooser,filedialog
 import os
+
+import calculater
 main_application = tk.Tk()
 main_application.geometry('2880x1800')
 main_application.title("Spad text editor")
@@ -145,6 +147,12 @@ align_center_btn.grid(row = 0 ,column = 7,padx = 5)
 align_right_icon = tk.PhotoImage(file = 'icons/align_right.png')
 align_right_btn = ttk.Button(tool_bar,image = align_right_icon)
 align_right_btn.grid(row = 0 ,column = 8,padx = 5)
+# calculator button
+calculator_icon = tk.PhotoImage(file='icons/calculator.png')
+calculator_icon = calculator_icon.subsample(2)  # Decrease the size of the icon
+calculator_btn = ttk.Button(tool_bar, image=calculator_icon)
+calculator_btn.grid(row=0, column=9, padx=2, sticky=tk.E)
+
 
 # ------------------------------ &&&&& Tool bar &&&&& ---------------------------------------
 
@@ -181,11 +189,14 @@ text_editor.configure(font = ('Liberation Serif',12))
 
 # bold button functionality
 def change_bold():
-    text_property = tk.font.Font(font=text_editor['font'])
-    if text_property.actual()['weight'] == 'normal':
-        text_editor.configure(font = (current_font_type,current_font_size,'bold'))
-    if text_property.actual()['weight'] == 'bold':
-        text_editor.configure(font = (current_font_type,current_font_size,'normal'))
+    selected_text = text_editor.get(tk.SEL_FIRST, tk.SEL_LAST)
+    if selected_text:
+        text_property = tk.font.Font(font=text_editor['font'])
+        if text_property.actual()['weight'] == 'normal':
+            text_editor.configure(font = (current_font_type,current_font_size,'bold'))
+        if text_property.actual()['weight'] == 'bold':
+            text_editor.configure(font = (current_font_type,current_font_size,'normal'))
+        
 
 bold_btn.configure(command = change_bold)
 
@@ -242,6 +253,10 @@ def right_align():
     text_editor.insert(tk.INSERT,text_content,'right')
 
 align_right_btn.configure(command = right_align)
+
+# calculator button functionality
+
+calculator_btn.configure(command=calculater.calculator)
 
 # ------------------------------ &&&&& End text manu &&&&& ---------------------------------------
 
