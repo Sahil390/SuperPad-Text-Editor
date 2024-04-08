@@ -89,7 +89,19 @@ font_tuple = tk.font.families()
 font_family = tk.StringVar()
 font_box = ttk.Combobox(tool_bar,width = 30, textvariable = font_family,state = 'readonly')
 font_box['values'] = font_tuple
-font_box.current(font_tuple.index('Microsoft Himalaya'))
+# font_box.current(font_tuple.index('Microsoft Himalaya'))
+try:
+    # Set the current font to 'Microsoft Himalaya'
+    font_box.current(font_tuple.index('Microsoft Himalaya'))
+except ValueError:
+    # If 'Microsoft Himalaya' is not in the tuple, set a default font
+    default_font = 'Arial'  # Replace with your preferred default font
+    if default_font in font_tuple:
+        font_box.current(font_tuple.index(default_font))
+    else:
+        # If the default font is also not available, set the first font as default
+        font_box.current(0)
+        print(f"Default font '{default_font}' is not available. Using the first available font.")
 font_box.grid(row = 0,column = 0,padx = 5)
 
 # font_size_box
