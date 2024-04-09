@@ -1,7 +1,7 @@
 import openai
 from PyQt5 import QtWidgets, QtGui
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 class ChatWindow(QtWidgets.QWidget):
     def __init__(self):
