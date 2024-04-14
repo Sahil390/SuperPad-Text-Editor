@@ -7,7 +7,7 @@ import os
 main_application = tk.Tk()
 main_application.geometry('2880x1800')
 main_application.title("Spad text editor")
-# main_application.wm_iconbitmap('icon.ico')
+main_application.wm_iconbitmap('icons//Spad.ico')
 
 
 ##################################### Main Manu ################################################
@@ -48,14 +48,6 @@ monokai_icon = tk.PhotoImage(file = 'icons/monokai.png')
 
 red_icon = tk.PhotoImage(file = 'icons/red.png')
 night_blue_icon = tk.PhotoImage(file = 'icons/night_blue.png')
-
-# colour_theme.add_command(label = 'Light Default' ,image = light_default_icon,compound = tk.LEFT)
-# colour_theme.add_command(label = 'Light Plus' ,image = light_plus_icon,compound = tk.LEFT)
-# colour_theme.add_command(label = 'Dark' ,image = dark_icon,compound = tk.LEFT)
-# colour_theme.add_command(label = 'Monokai' ,image = monokai_icon,compound = tk.LEFT)
-# colour_theme.add_command(label = 'Red' ,image = red_icon,compound = tk.LEFT)
-# colour_theme.add_command(label = 'Night blue' ,image = night_blue_icon,compound = tk.LEFT)
-
 theme_choice = tk.StringVar()
 color_icon = (light_default_icon,light_plus_icon,dark_icon,red_icon,monokai_icon,night_blue_icon)
 
@@ -153,7 +145,11 @@ calculator_icon = calculator_icon.subsample(2)  # Decrease the size of the icon
 calculator_btn = ttk.Button(tool_bar, image=calculator_icon)
 calculator_btn.grid(row=0, column=9, padx=2, sticky=tk.E)
 
-
+# todo_list button
+todo_icon = tk.PhotoImage(file='icons/to-do-list.png')
+todo_icon = todo_icon.subsample(16)  # Decrease the size of the icon
+todo_btn = ttk.Button(tool_bar, image=todo_icon)
+todo_btn.grid(row=0, column=10, padx=2, sticky=tk.E)
 # ------------------------------ &&&&& Tool bar &&&&& ---------------------------------------
 
 
@@ -251,34 +247,15 @@ align_right_btn.configure(command = right_align)
 
 # calculator button functionality
 def calculator():
-    def button_click(number):
-        current = entry.get()
-        entry.delete(0, tk.END)
-        entry.insert(tk.END, current + str(number))
-
-    def button_clear():
-        entry.delete(0, tk.END)
-
-    def button_equal(event=None):  
-        expression = entry.get()
-        result = eval(expression)
-        entry.delete(0, tk.END)
-        entry.insert(tk.END, result)
-
-    # Create the main window
-    window = tk.Tk()
-    window.title("Calculator")
-
-    # Create an entry widget to display the numbers and results
-    entry = tk.Entry(window, width=20, borderwidth=5, font=("Arial", 20))
-    entry.grid(row=0, column=0, columnspan=4, padx=10, pady=10)
-
-    # Bind the Enter key to the button_equal() function
-    window.bind('<Return>', button_equal)
-
-    # Start the main loop
-    window.mainloop()
+    os.system('python calculater.py')
 calculator_btn.configure(command=calculator)
+
+
+# todo_list button functionality
+def todo_list():
+    os.system('python todo.py')
+
+todo_btn.configure(command=todo_list)
 
 # ------------------------------ &&&&& End text manu &&&&& ---------------------------------------
 
@@ -426,7 +403,7 @@ def find_func(event=None):
 
     find_dialogue.geometry('350x150')
     find_dialogue.title('Find')
-    find_dialogue.wm_iconbitmap("find.ico")
+    find_dialogue.wm_iconbitmap("icons//find.ico")
     find_dialogue.resizable(0,0)
 
 
