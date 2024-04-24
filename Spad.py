@@ -185,32 +185,34 @@ text_editor.configure(font = ('Liberation Serif',12))
 
 # bold button functionality
 def change_bold():
-    text_property = tk.font.Font(font=text_editor['font'])
+    text_property = tk.font.Font(font = text_editor['font'])
     if text_property.actual()['weight'] == 'normal':
-        text_editor.configure(font=(current_font_type, current_font_size, 'bold', text_property.actual()['slant'], text_property.actual()['underline']))
-    else:
-        text_editor.configure(font=(current_font_type, current_font_size, 'normal', text_property.actual()['slant'], text_property.actual()['underline']))
+        text_editor.configure(font = (current_font_type,current_font_size,'bold'))
+    if text_property.actual()['weight'] == 'bold':
+        text_editor.configure(font = (current_font_type,current_font_size,'normal'))
 
-bold_btn.configure(command=change_bold)
+bold_btn.configure(command = change_bold)
 
 # italic button functionality
 def change_italic():
-    text_property = tk.font.Font(font=text_editor['font'])
+    text_property = tk.font.Font(font = text_editor['font'])
     if text_property.actual()['slant'] == 'roman':
-        text_editor.configure(font=(current_font_type, current_font_size, text_property.actual()['weight'], 'italic', text_property.actual()['underline']))
-    else:
-        text_editor.configure(font=(current_font_type, current_font_size, text_property.actual()['weight'], 'roman', text_property.actual()['underline']))
+        text_editor.configure(font = (current_font_type,current_font_size,'italic'))
+    if text_property.actual()['slant'] == 'italic':
+        text_editor.configure(font = (current_font_type,current_font_size,'roman'))
 
-italic_btn.configure(command=change_italic)
+italic_btn.configure(command = change_italic)
+
 # underline button functionality
 def change_underline():
-    text_property = tk.font.Font(font=text_editor['font'])
+    text_property = tk.font.Font(font = text_editor['font'])
     if text_property.actual()['underline'] == 0:
-        text_editor.configure(font=(current_font_type, current_font_size, text_property.actual()['weight'], text_property.actual()['slant'], 'underline'))
-    else:
-        text_editor.configure(font=(current_font_type, current_font_size, text_property.actual()['weight'], text_property.actual()['slant'], 'normal'))
+        text_editor.configure(font = (current_font_type,current_font_size,'underline'))
+    if text_property.actual()['underline'] == 1:
+        text_editor.configure(font = (current_font_type,current_font_size,'normal'))
 
 underline_btn.configure(command = change_underline)
+
 # font_color_chooser
 def change_font_color():
     color_var = tk.colorchooser.askcolor()

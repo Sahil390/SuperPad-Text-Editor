@@ -1,2 +1,4 @@
-<h1><center>This is Spad</center></h1>
-<p>This is a simple python project, where i build a basic text editor name <b>'Spad'</b> with an few additional features like todo list and calculator.</p>
+# This is Spad
+
+This is a simple Python project where I build a basic text editor named **Spad** with a few additional features like a todo list and calculator.
+[![Spad](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=uCH11M75p8w)
