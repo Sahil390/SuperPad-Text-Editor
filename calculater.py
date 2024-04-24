@@ -1,13 +1,5 @@
 import tkinter as tk
 
-def button_click(number):
-    current = entry.get()
-    entry.delete(0, tk.END)
-    entry.insert(tk.END, current + str(number))
-
-def button_clear():
-    entry.delete(0, tk.END)
-
 def button_equal(event=None):  
     expression = entry.get()
     result = eval(expression)
