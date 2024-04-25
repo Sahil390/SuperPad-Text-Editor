@@ -6,8 +6,8 @@ import os
 # import calculater
 main_application = tk.Tk()
 main_application.geometry('2880x1800')
-main_application.title("Spad text editor")
-main_application.wm_iconbitmap('icons//Spad.ico')
+main_application.title("SuperPad")
+main_application.wm_iconbitmap('icons//SuperPad.ico')
 
 
 ##################################### Main Manu ################################################
